@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0d1117;
+  --bg2: #161b22;
+  --bg3: #21262d;
+  --gold: #d4a843;
+  --gold-light: #f0c860;
+  --text: #e6edf3;
+  --text-muted: #8b949e;
+  --border: #30363d;
+  --radius: 12px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Noto Sans KR', sans-serif;
+  min-height: 100vh;
+}
+
+/* Header */
+header {
+  text-align: center;
+  padding: 3rem 1rem 2rem;
+  background: linear-gradient(180deg, #0d1117 0%, #161b22 100%);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+header::before {
+  content: '☯';
+  position: absolute;
+  font-size: 20rem;
+  opacity: 0.03;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.header-sub {
+  color: var(--gold);
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+header h1 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: clamp(2.2rem, 6vw, 3.5rem);
+  font-weight: 700;
+  color: var(--gold-light);
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 40px rgba(212,168,67,0.3);
+}
+header h1 span { color: var(--text); }
+.header-desc {
+  margin-top: 1rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* Main */
+main { max-width: 860px; margin: 0 auto; padding: 2rem 1rem 4rem; }
+
+/* Form */
+.form-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+.form-card h2 {
+  font-family: 'Noto Serif KR', serif;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+@media (max-width: 500px) { .form-grid { grid-template-columns: 1fr; } }
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.form-group label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+.form-group input {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.7rem 1rem;
+  color: var(--text);
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+.form-group input:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+.form-group input::-webkit-calendar-picker-indicator { filter: invert(0.7); cursor: pointer; }
+.form-note {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+.submit-btn {
+  display: block;
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 0.9rem;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+  color: #000;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  letter-spacing: 0.1em;
+  transition: opacity 0.2s, transform 0.1s;
+}
+.submit-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+.submit-btn:active { transform: translateY(0); }
+
+/* Result */
+.hidden { display: none !important; }
+.result-header {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.4rem;
+  color: var(--gold-light);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Section cards */
+.section-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  margin-bottom: 1.25rem;
+}
+.section-card h3 {
+  font-family: 'Noto Serif KR', serif;
+  color: var(--gold);
+  font-size: 1rem;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.05em;
+}
+
+/* Four Pillars */
+#pillars-display {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+@media (max-width: 480px) {
+  #pillars-display { grid-template-columns: repeat(2, 1fr); }
+}
+.pillar-card {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 0.5rem;
+  text-align: center;
+  position: relative;
+  transition: border-color 0.2s;
+}
+.pillar-card.day-pillar {
+  border-color: var(--gold);
+  background: linear-gradient(180deg, rgba(212,168,67,0.08) 0%, var(--bg3) 100%);
+}
+.pillar-label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.03em;
+}
+.pillar-stem, .pillar-branch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.5rem 0;
+}
+.char-kor {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1;
+}
+.char-han {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.element-badge {
+  font-size: 0.65rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  margin-top: 0.2rem;
+}
+.elem-목 { background: rgba(76,175,80,0.2); color: #81C784; }
+.elem-화 { background: rgba(255,87,34,0.2); color: #FF8A65; }
+.elem-토 { background: rgba(255,152,0,0.2); color: #FFB74D; }
+.elem-금 { background: rgba(158,158,158,0.2); color: #BDBDBD; }
+.elem-수 { background: rgba(33,150,243,0.2); color: #64B5F6; }
+.pillar-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 0.25rem 0.5rem;
+}
+.me-badge {
+  font-size: 0.65rem;
+  color: var(--gold);
+  margin-top: 0.4rem;
+  letter-spacing: 0.05em;
+}
+
+/* Element bars */
+.elem-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
+}
+.elem-name {
+  width: 110px;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+.elem-meaning { font-size: 0.7rem; color: var(--text-muted); }
+.elem-bar-wrap {
+  flex: 1;
+  background: var(--bg3);
+  border-radius: 4px;
+  height: 10px;
+  overflow: hidden;
+}
+.elem-bar {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.8s ease;
+}
+.elem-count { font-size: 0.8rem; color: var(--text-muted); width: 28px; text-align: right; }
+#element-balance {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--gold);
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+/* Personality */
+#personality-title {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.1rem;
+  color: var(--gold-light);
+  margin-bottom: 0.75rem;
+}
+#personality-traits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.9rem;
+}
+.trait-tag {
+  background: rgba(212,168,67,0.15);
+  color: var(--gold);
+  border: 1px solid rgba(212,168,67,0.3);
+  border-radius: 20px;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.78rem;
+}
+#personality-desc {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+/* Daily Fortune */
+.fortune-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.9rem;
+}
+#fortune-date { font-size: 0.85rem; color: var(--text-muted); }
+#fortune-luck {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #fff;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+}
+#fortune-message {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  border-top: 1px solid var(--border);
+}
